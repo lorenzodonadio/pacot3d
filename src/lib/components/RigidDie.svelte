@@ -45,7 +45,7 @@
 
 <T.Group {rotation} {position}>
 	<!-- on:collisionexit={firesound} -->
-	<RigidBody bind:rigidBody on:sleep={handleSleep}>
+	<RigidBody bind:rigidBody gravityScale={2} on:sleep={handleSleep}>
 		<Collider
 			contactForceEventThreshold={50}
 			restitution={0.85}
