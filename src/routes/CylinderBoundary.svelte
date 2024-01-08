@@ -7,7 +7,7 @@
 	export let visible = false;
 </script>
 
-<AutoColliders shape={'trimesh'} restitution={0.9}>
+<AutoColliders shape={'trimesh'} restitution={0.6}>
 	<T.Mesh position.y={-0.5} {visible}>
 		<!-- <T.CircleGeometry args={[10, 60]} /> -->
 		<T.TubeGeometry args={[new VerticalLineCurve(height), 30, radius, 20]}></T.TubeGeometry>

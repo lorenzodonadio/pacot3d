@@ -4,7 +4,7 @@
 	import { Collider, RigidBody } from '@threlte/rapier';
 	// import { Vector3, type Group, type Object3DEventMap, Quaternion, Euler } from 'three';
 	import { getFacePoints } from '$lib/utils/diceRotation';
-	import { rollResult } from '$lib/generalState';
+	import { checkGameFinished, rollResult } from '$lib/generalState';
 
 	export let position: [number, number, number];
 	export let rotation: [number, number, number];
@@ -20,9 +20,10 @@
 		// const position = rigidBody.position();
 
 		const faceUp = getFaceUp();
-		console.log('Up-facing face:', getFaceUp());
+		// console.log('Up-facing face:', getFaceUp());
 
 		rollResult.update((x) => [...x, { id, faceUp }]);
+		checkGameFinished();
 	};
 
 	const getFaceUp = () => {
@@ -48,7 +49,7 @@
 	<RigidBody bind:rigidBody gravityScale={2} on:sleep={handleSleep}>
 		<Collider
 			contactForceEventThreshold={50}
-			restitution={0.85}
+			restitution={0.75}
 			shape={'roundCuboid'}
 			args={[0.3, 0.3, 0.3, 0.2]}
 		/>
