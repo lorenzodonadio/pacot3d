@@ -7,7 +7,7 @@
 </script>
 
 {#await useTexture('/wood_texture.png') then texture}
-	<AutoColliders shape={'trimesh'} restitution={0.6}>
+	<AutoColliders shape={'trimesh'} restitution={0.5}>
 		<!-- rotation.x={-Math.PI / 2} -->
 		<T.Mesh position.y={-0.55}>
 			<!-- <T.CircleGeometry args={[10, 60]} /> -->

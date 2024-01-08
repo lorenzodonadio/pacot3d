@@ -1,6 +1,8 @@
 <script lang="ts">
+	import FaceResults from './FaceResults.svelte';
+
 	import Modal from '$lib/components/Modal.svelte';
-	import { diceAmount, diceConfig, rollResult } from '$lib/generalState';
+	import { diceAmount, diceConfig, groupDiceByFaceUp, rollResult } from '$lib/generalState';
 	import { randDiceConfig } from '$lib/utils/diceConfig';
 	import Dice from './App.svelte';
 	import { onDestroy, onMount } from 'svelte';
@@ -10,6 +12,8 @@
 	// $: console.log($rollResult);
 	$: if ($rollResult.length >= $diceAmount) {
 		dialog.showModal();
+		console.log($rollResult);
+		console.log(groupDiceByFaceUp($rollResult));
 	}
 
 	const handlePlayAgain = () => {
@@ -28,9 +32,7 @@
 	<Modal bind:dialog on:close={() => ($rollResult = [])}>
 		<div style="padding: 4rem;">
 			<p>Result:</p>
-			{#each $rollResult as r}
-				<span style="padding-right: 2px; font-weight: 600;">{r.faceUp}</span>
-			{/each}
+			<FaceResults></FaceResults>
 
 			<label for="range">
 				<span>
