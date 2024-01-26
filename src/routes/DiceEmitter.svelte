@@ -5,6 +5,9 @@
 	import { delay } from '$lib/utils/delay';
 	import { diceAmount, diceConfig } from '$lib/generalState';
 	const { renderer, scene, size, camera } = useThrelte();
+
+
+	
 </script>
 
 {#key $diceConfig}
